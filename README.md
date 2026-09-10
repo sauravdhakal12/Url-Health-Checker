@@ -1,5 +1,6 @@
 # Bulk URL Health Checker
 A hobby project built to get hands-on with backend concepts I wanted to understand more deeply: the Pub/Sub pattern (via Redis), Server-Sent Events, background job processing, and idempotency under concurrent/retried work.
+Live URL: https://url.sauravdhakal.com.np/
 
 ## What I learned building this
 - How to enforce a global rate limit across multiple worker processes using BullMQ + Redis, rather than per-process limits. 
