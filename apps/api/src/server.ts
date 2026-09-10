@@ -7,7 +7,7 @@ import { eventRoutes } from './routes/events';
 export async function buildServer() {
   const fastify = Fastify({ logger: true });
 
-  await fastify.register(cors, { origin: true });
+  await fastify.register(cors, { origin: 'https://url.sauravdhakal.com.np' });
   fastify.register(batchRoutes, { prefix: '/batches' });
   fastify.register(batchActionRoutes, { prefix: '/batches' });
   fastify.register(eventRoutes, { prefix: '/batches' });

@@ -12,7 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "CommonJS",
   "private": "true",
   "dependencies": {
     "@prisma/client": "^5.22.0",

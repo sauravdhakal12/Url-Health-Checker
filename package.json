@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "pnpm run docker:up && pnpm -r --parallel run dev",
     "docker:up": "docker compose up -d",
+    "start": "pm2 start ecosystem.config.js",
+    "stop": "pm2 stop ecosystem.config.js",
+    "logs": "pm2 logs",
     "docker:down": "docker compose down",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
