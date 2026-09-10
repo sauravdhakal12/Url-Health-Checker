@@ -1,0 +1,23 @@
+{
+  "name": "url-health-checker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm run docker:up && pnpm -r --parallel run dev",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^26.4.0",
+    "@prisma/client": "^5.22.0",
+    "prisma": "^5.22.0",
+    "tsx": "^4.19.0",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum BatchStatus {
+  pending
+  running
+  completed
+  cancelled
+}
+
+enum UrlCheckStatus {
+  pending
+  in_progress
+  done
+  failed
+  cancelled
+}
+
+model Batch {
+  id        String      @id @default(uuid())
+  status    BatchStatus @default(pending)
+  totalUrls Int         @map("total_urls")
+  createdAt DateTime    @default(now()) @map("created_at")
+  updatedAt DateTime    @updatedAt @map("updated_at")
+
+  urlChecks UrlCheck[]
+
+  @@map("batches")
+}
+
+model UrlCheck {
+  id      String @id @default(uuid())
+  batchId String @map("batch_id")
+  batch   Batch  @relation(fields: [batchId], references: [id], onDelete: Cascade)
+
+  url          String
+  status       UrlCheckStatus @default(pending)
+  httpStatus   Int?           @map("http_status")
+  responseMs   Int?           @map("response_ms")
+  pageTitle    String?        @map("page_title")
+  attemptCount Int            @default(0) @map("attempt_count")
+  errorMessage String?        @map("error_message")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([batchId])
+  @@map("url_checks")
+}
