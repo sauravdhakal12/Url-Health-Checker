@@ -7,6 +7,8 @@ A hobby project built to get hands-on with backend concepts I wanted to understa
 - Designing for idempotency where retries or duplicate job triggers should never corrupt or double-write state, by keying all writes off a stable row identity. 
 - Why the live connection can never be the only source of truth and cold loads and reconnects have to re-sync from the database, not just trust accumulated events.
 
+## What it does
+Paste in a list of URLs (or upload a CSV), and the app checks each one in the background, capturing its HTTP status code, response time, and page title. Progress updates live on the page as results come in, without needing to refresh. You can cancel a batch mid-run, or retry just the URLs that failed.
 
 ## Architecture
 - Postgres (Source of Truth): Stores the definitive state of every batch and URL check. It is the only true source of record.
